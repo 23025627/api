@@ -34,7 +34,7 @@
 |-->src<br>
   &emsp;|-->Backend<br>
     &emsp;&emsp;|-->Banco_de_dados<br>
-    &emsp;&emsp;|-->Servidor_Doamais_Oficial<br>
+    &emsp;&emsp;|-->Servidor_Pickyourdriver_Oficial<br>
   &emsp;|-->Frontend<br>
     &emsp;&emsp;|-->react<br>
 |readme.md<br>
@@ -54,6 +54,7 @@ Para abrir este projeto você necessita das seguintes ferramentas:
 
 ## 📋 Licença/License
 
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/2024-1-NADS2/Projeto1">Pick Your Driver</a> by <span property="cc:attributionName">Daniel Baptista, Fabio Spindola, Fabricio Nascimento, Leonardo de Souza</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p>
 
 ## 🎓 Referências
 
@@ -63,8 +64,5 @@ Aqui estão as referências usadas no projeto.
 2. <https://github.com/gabrieldejesus/readme-model>
 3. <https://creativecommons.org/share-your-work/>
 4. <https://getbootstrap.com/>
-5. <https://aacd.org.br/>
-6. <https://www.exercitodoacoes.org.br/>
 7. <https://nodejs.org/en>
 8. <https://www.youtube.com/@yggbrasiledu>
-9. <https://www.prosangue.sp.gov.br/home/>
