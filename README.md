@@ -1,7 +1,7 @@
 # FECAP - Fundação de Comércio Álvares Penteado
 
 <p align="center">
-<img src="https://github.com/2025-1-NADS4/Projeto2/blob/main/imagens/logo_fundo_cinza.png" alt="Logo Pick Your Driver" border="0"></a>
+<a href= "https://www.fecap.br/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhZPrRa89Kma0ZZogxm0pi-tCn_TLKeHGVxywp-LXAFGR3B1DPouAJYHgKZGV0XTEf4AE&usqp=CAU" alt="FECAP - Fundação de Comércio Álvares Penteado" border="0"></a>
 </p>
 
 # Pick Your Driver 🚕
@@ -14,8 +14,7 @@
 ## Descrição
 
 <p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
+<img src="[https://pix4free.org/assets/library/2021-01-20/originals/game.jpg](https://github.com/2025-1-NADS4/Projeto2/blob/main/imagens/logo_fundo_cinza.png)" alt="Logo Pick Your Driver" border="0">
 </p>
 
 
