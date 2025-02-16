@@ -14,7 +14,7 @@
 ## Descrição
 
 <p align="center">
-<img src="[https://pix4free.org/assets/library/2021-01-20/originals/game.jpg](https://github.com/2025-1-NADS4/Projeto2/blob/main/imagens/logo_fundo_cinza.png)" alt="Logo Pick Your Driver" border="0">
+<img src="https://github.com/2025-1-NADS4/Projeto2/blob/main/imagens/logo_fundo_cinza.png" alt="Logo Pick Your Driver" border="0">
 </p>
 
 
