@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS db_pick_your_driver;
+USE db_pick_your_driver;
+
+CREATE TABLE IF NOT EXISTS viagens (
+    id_pesquisa INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    endereco_partida VARCHAR(255) NOT NULL,
+    endereco_destino VARCHAR(255) NOT NULL,
+    latitude_partida DECIMAL(10, 7) NOT NULL,
+    longitude_partida DECIMAL(10, 7) NOT NULL,
+    latitude_destino DECIMAL(10, 7) NOT NULL,
+    longitude_destino DECIMAL(10, 7) NOT NULL,
+    distancia_kilometros DECIMAL(10, 2) NOT NULL,
+    tempo_estimado VARCHAR(50) NOT NULL,
+    preco_estimado DECIMAL(10, 2) NOT NULL
+);
