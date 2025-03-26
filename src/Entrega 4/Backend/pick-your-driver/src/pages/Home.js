@@ -25,6 +25,9 @@ function Home(){
     return(
         <HomeContainer>
             <NavBar />
+            <div class="text-center p-4 p-lg-5">
+                <h1 class="fw-bold mb-4">Nunca foi tão fácil comparar os preços das suas corridas</h1>
+            </div>
             <Footer />
         </HomeContainer>
     );
