@@ -42,7 +42,9 @@ function Home(){
                         <input type="text" style={{width: "300px"}} />
                         <button type="button" class="btn btn-dark" style={{ fontWeight: "bold", margin: "0px", marginTop: "20px", display: "flex" }}>Ver preços</button>
                     </div>
-                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <iframe allowfullscreen frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%" height="100%"></iframe>
+                    </div>
                 </div>
             </div>
             <Footer />
