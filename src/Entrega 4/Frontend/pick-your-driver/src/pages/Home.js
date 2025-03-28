@@ -30,12 +30,12 @@ function Home(){
             </div>
             <div class="container">
                 <div class="row">
-                    <h1 style={{fontSize: "14px"}}>Planeje a sua próxima viagem com a nossa calculadora de preço.</h1>
+                    <h1 style={{fontSize: "16px"}}>Planeje a sua próxima viagem com a nossa calculadora de preço.</h1>
                     <div class="col-md-6">
                         <h1 class="fs-5" style={{marginTop: "10px"}}>Nome</h1>
                         <input type="text" style={{width: "300px"}} />
                         <h1 class="fs-5" style={{marginTop: "10px"}}>E-mail</h1>
-                        <input type="text" style={{width: "300px"}} />
+                        <input type="email" style={{width: "300px"}} />
                         <h1 class="fs-5" style={{marginTop: "10px"}}>Saindo de</h1>
                         <input type="text" style={{width: "300px"}} />
                         <h1 class="fs-5" style={{marginTop: "10px"}}>Indo Para</h1>
