@@ -15,7 +15,7 @@ function NavBar(){
         <NavBarContainer>
             <nav class="navbar navbar-expand-lg bg-body-secondary">
                 <div class="container-fluid">
-                    <a class="navbar-brand"><img src={Logo} alt="Logo" width="75" height="60"/></a><a class="navbar-brand fw-bold ">Pick Your Driver</a>
+                    <a class="navbar-brand"><StyledLink to="/"><img src={Logo} alt="Logo" width="75" height="60"/></StyledLink></a><a class="navbar-brand fw-bold ">Pick Your Driver</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>

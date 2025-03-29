@@ -13,5 +13,6 @@ CREATE TABLE IF NOT EXISTS viagens (
     longitude_destino DECIMAL(10, 7) NOT NULL,
     distancia_kilometros DECIMAL(10, 2) NOT NULL,
     tempo_estimado VARCHAR(50) NOT NULL,
-    preco_estimado DECIMAL(10, 2) NOT NULL
+    preco_estimado DECIMAL(10, 2) NOT NULL,
+    data_consulta DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

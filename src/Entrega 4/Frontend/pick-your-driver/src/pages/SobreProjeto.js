@@ -28,8 +28,16 @@ function SobreProjeto(){
     return(
         <SobreProjetoContainer>
             <NavBar />
+
             <div className="container my-5">
                 <div className="row gy-4">
+                    <div class="col-12 text-lg-center">
+                        <div class="card bg-transparent border-0">
+                            <div class="card-body border-0">
+                                <h2 style={{fontStyle: "bold", textAlign: "left", margin: "0"}}>Sobre o Projeto</h2>
+                            </div>
+                        </div>
+                    </div>
                     <div className="col-12 text-lg-center">
                     <div className="card bg-transparent border-0"></div>
                     </div>
