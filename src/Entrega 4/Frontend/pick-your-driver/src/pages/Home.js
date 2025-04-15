@@ -26,7 +26,7 @@ function Home(){
                         <input type="text" style={{width: "300px"}} />
                         <h1 class="fs-5" style={{marginTop: "10px"}}>Indo Para</h1>
                         <input type="text" style={{width: "300px"}} />
-                        <button type="button" class="btn btn-dark" style={{ fontWeight: "bold", margin: "0px", marginTop: "20px", display: "flex" }}>Ver preços</button>
+                        <button type="button" class="btn btn-dark" style={{ fontWeight: "bold", margin: "0px", marginTop: "20px", display: "flex" }} data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver preços</button>
                     </div>
                     <div class="col-md-6">
                         <iframe allowfullscreen frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%" height="100%"></iframe>
@@ -74,6 +74,32 @@ function Home(){
                                     Quando o número de utilizadores excede o de motoristas disponíveis, os preços podem ser elevados temporariamente até que o equilíbrio entre oferta e demanda seja restabelecido.
                                 </p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Preços</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Aqui estão os preços das corridas que você solicitou:
+                            <div class="row">
+                                <p> </p>
+                                <p> </p>
+                                <p> </p>
+                                <p> </p>
+                                <p> </p>
+                                <p> </p>
+                            </div>   
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" style={{ fontWeight: "bold", margin: "0px", marginTop: "20px", display: "flex" }}>Fechar</button>
+                        </div>
                         </div>
                     </div>
                 </div>
