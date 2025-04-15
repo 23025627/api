@@ -7,21 +7,7 @@ import ImagemMercado from '../assets/imagem_mercado.jpg';
 import ImagemProblema from '../assets/Imagem_problema.jpg';
 
 const SobreProjetoContainer = styled.div`
-    @media only screen and (min-width: 1201px){
-        width: 100%;
-    }
-    @media (max-width: 1200px) and (min-width: 1025px){
-        width: 100%;
-    } 
-    @media (max-width: 1024px) and (min-width: 769px){
-        width: 100%;
-    } 
-    @media (max-width: 768px) and (min-width: 481px){
-        width: 100%;
-    } 
-    @media (max-width: 480px) and (min-width: 320px){
-        width: 100%;
-    } 
+
 `
 
 function SobreProjeto(){
@@ -34,7 +20,7 @@ function SobreProjeto(){
                     <div class="col-12 text-lg-center">
                         <div class="card bg-transparent border-0">
                             <div class="card-body border-0">
-                                <h2 style={{fontStyle: "bold", textAlign: "left", margin: "0"}}>Sobre o Projeto</h2>
+                                <h2 style={{fontStyle: "bold", textAlign: "left", marginBottom: "20px", fontWeight: "bold"}}>Sobre o Projeto</h2>
                             </div>
                         </div>
                     </div>
@@ -56,7 +42,7 @@ function SobreProjeto(){
                         <div className="col-lg-6 d-lg-flex align-items-lg-center">
                             <div className="card-body px-lg-4">
                             <h3>
-                                <span style={{ color: "rgb(32, 18, 77)" }}>Mercado</span>
+                                <span style={{ color: "rgb(32, 18, 77)", fontWeight: "bold" }}>Mercado</span>
                             </h3>
                             <ul></ul>
                             <p style={{ textAlign: "left" }}>
@@ -87,7 +73,7 @@ function SobreProjeto(){
                         <div className="col-lg-6 d-lg-flex align-items-lg-center">
                             <div className="card-body px-lg-4">
                             <h3>
-                                <span style={{ color: "rgb(32, 18, 77)" }}>Problema</span>
+                                <span style={{ color: "rgb(32, 18, 77)", fontWeight: "bold" }}>Problema</span>
                             </h3>
                             <ul></ul>
                             <p style={{ textAlign: "left" }}>
@@ -118,7 +104,7 @@ function SobreProjeto(){
                         <div className="col-lg-6 d-lg-flex align-items-lg-center">
                             <div className="card-body px-lg-4">
                             <h3>
-                                <span style={{ color: "rgb(32, 18, 77)" }}>Solução</span>
+                                <span style={{ color: "rgb(32, 18, 77)", fontWeight: "bold" }}>Solução</span>
                             </h3>
                             <ul></ul>
                             <p style={{ textAlign: "left" }}>
