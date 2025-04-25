@@ -36,7 +36,7 @@ function Home(){
             <div class="container py-4 py-xl-5">
                 <div class="row mb-5">
                     <h2 style={{ textAlign: "left", marginTop: "20px", marginBottom: "20px", fontWeight: "bold"}}>De qual maneira são determinados os preços?</h2>
-                    <h1 style={{fontSize: "16px", marginTop: "20px", marginBottom: "20px"}}>Veja algumas taxas e fatores que podem afetar o seu preço:</h1>
+                    <h1 style={{fontSize: "16px", marginTop: "20px", marginBottom: "20px"}}>Veja algumas taxas e fatores que podem afetar o preço das corridas:</h1>
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                     <div class="col">
