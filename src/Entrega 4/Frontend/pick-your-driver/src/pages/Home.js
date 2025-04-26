@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Maps from '../components/Maps';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import imagemuberblack from '../assets/uber_black.png';
 import imagemubercomfort from '../assets/uber_comfort.png';
 import imagemuberx from '../assets/uber_x.png';
+
 
 const HomeContainer = styled.div`
 
@@ -32,7 +34,7 @@ function Home(){
                         <button type="button" class="btn btn-dark" style={{ fontWeight: "bold", margin: "0px", marginTop: "20px", display: "flex" }} data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver preços</button>
                     </div>
                     <div class="col-md-6">
-                        <iframe allowfullscreen frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%" height="100%"></iframe>
+                        <Maps />
                     </div>
                 </div>
             </div>
@@ -89,14 +91,14 @@ function Home(){
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Preços</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            Aqui estão os preços das corridas que você solicitou:
+                        <div class="modal-body" style={{width: "500px", height: "350px"}}>
+                            Aqui estão os preços da corrida que você solicitou:
                             <div className="row align-items-center" style={{marginTop: "20px"}}>
                                 <div className="col-auto">
                                     <img
                                         alt="Logo/imagem Uber X"
                                         src={imagemuberx}
-                                        style={{width: "60px", height: "60px", marginTop: "15px", marginBottom: "15px"}}
+                                        style={{width: "70px", height: "60px", marginTop: "15px", marginBottom: "15px"}}
                                     />
                                 </div>
                                 <div className="col">
@@ -109,7 +111,7 @@ function Home(){
                                     <img
                                         alt="Logo/imagem Uber Comfort"
                                         src={imagemubercomfort}
-                                        style={{width: "61px", height: "68px", marginTop: "15px", marginBottom: "15px"}}
+                                        style={{width: "71px", height: "68px", marginTop: "15px", marginBottom: "15px"}}
                                     />
                                 </div>
                                 <div className="col">
@@ -122,7 +124,7 @@ function Home(){
                                     <img
                                         alt="Logo/imagem Uber Black"
                                         src={imagemuberblack}
-                                        style={{width: "60px", height: "60px", marginTop: "15px", marginBottom: "15px"}}
+                                        style={{width: "70px", height: "60px", marginTop: "15px", marginBottom: "15px"}}
                                     />
                                 </div>
                                 <div className="col">

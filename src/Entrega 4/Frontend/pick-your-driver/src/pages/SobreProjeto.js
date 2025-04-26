@@ -90,7 +90,7 @@ function SobreProjeto(){
                         </div>
                     </div>
                     <div className="col-12">
-                        <div className="card" data-aos="fade" data-aos-delay="250">
+                        <div className="card" data-aos="fade" data-aos-delay="255">
                             <div className="row g-0">
                             <div className="col-lg-6 d-lg-flex align-items-lg-center">
                                 <picture className="d-block mt-3 mx-3 mb-lg-3">
