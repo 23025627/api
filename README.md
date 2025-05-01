@@ -18,9 +18,9 @@
 </p>
 
 
-<p>Este site foi criado por estudantes do curso de Análise e Desenvolvimento de Sistemas do Centro Universitário - Fundação Escola de Comércio Álvares Penteado (FECAP)</p>
+<p>Este site foi idealizado por estudantes do quarto semestre do curso de Análise e Desenvolvimento de Sistemas da Fundação Escola de Comércio Álvares Penteado (FECAP), como parte da entrega do Projeto Interdisciplinar Startup Digital.</p>
+<p>A Pick Your Driver é um comparador de preços de corridas realizadas por aplicativos de transporte (Uber, 99 e Cabify).</p>
 <br></br>
-<p>Link do Figma:</p>
 <p>Link do site:</p>
 
 ## 🛠 Estrutura de pastas
