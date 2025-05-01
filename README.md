@@ -65,4 +65,3 @@ Aqui estão as referências usadas no projeto.
 2. <https://github.com/gabrieldejesus/readme-model>
 3. <https://creativecommons.org/share-your-work/>
 4. <https://getbootstrap.com/>
-7. <https://nodejs.org/en>
