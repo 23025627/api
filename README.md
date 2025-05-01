@@ -8,7 +8,7 @@
 
 ## Charge Back
 
-## Integrantes: <a href="https://www.linkedin.com/in/daniel-acioli-b72818322/">Daniel Baptista</a>, <a href="https://www.linkedin.com/in/fabiospindola/">Fabio Spindola</a>, <a href="https://br.linkedin.com/in/fabriciocnascimento">Fabrício Nascimento</a>, <a href="https://www.linkedin.com/in/leonardo-de-souza-mouzinho-5581bb2a8/">Leonardo de Souza</a>
+## Integrantes: <a href="https://www.linkedin.com/in/daniel-acioli-b72818322/">Daniel Baptista</a>, <a href="https://www.linkedin.com/in/fabiospindola/">Fábio Spindola</a>, <a href="https://br.linkedin.com/in/fabriciocnascimento">Fabrício Nascimento</a>, <a href="https://www.linkedin.com/in/leonardo-de-souza-mouzinho-5581bb2a8/">Leonardo de Souza</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/aimarlopes/">Aimar Martins Lopes</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Bruno Alexander Rosetti de Quiroz</a>
 ## Descrição
