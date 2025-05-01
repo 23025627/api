@@ -50,6 +50,8 @@ Para abrir este projeto você necessita das seguintes ferramentas:
 <p>-<a href="https://nodejs.org/en](https://www.mysql.com/">MySQL Workbench</a></p>
 <p>-<a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
 <p>-<a href="https://visualstudio.microsoft.com/pt-br/vs/">Visual Studio 2022</a></p>
+<p>-<a href="https://www.python.org/">Python</a></p>
+<p>-<a href="https://jupyter.org/">Jupyter Notebook</a></p>
 
 ## 📋 Licença/License
 
@@ -64,4 +66,3 @@ Aqui estão as referências usadas no projeto.
 3. <https://creativecommons.org/share-your-work/>
 4. <https://getbootstrap.com/>
 7. <https://nodejs.org/en>
-8. <https://www.youtube.com/@yggbrasiledu>
