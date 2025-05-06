@@ -1,19 +1,18 @@
 import pandas as pd
 import sqlite3
+import requests
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from datetime import datetime
 import unicodedata
 import warnings
-from geopy.geocoders import Nominatim
-from WazeRouteCalculator import WazeRouteCalculator, WRCError
 
 warnings.filterwarnings("ignore")
 
 # Configs globais
 SEED = 20
-geolocator = Nominatim(user_agent="predictor-app")
+GOOGLE_API_KEY = "AIzaSyDLZuBuKwtf5kIBRrC7e_Yf3Qaf8RuW"
 
 
 def load_data():
@@ -76,33 +75,44 @@ def limpar_endereco(endereco):
 
 def endereco_para_coordenadas(endereco):
     endereco_limpo = limpar_endereco(endereco)
-    location = geolocator.geocode(endereco_limpo, timeout=15)
-    if location:
-        return location.latitude, location.longitude
+    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={endereco_limpo}&key={GOOGLE_API_KEY}"
+    response = requests.get(url)
+    data = response.json()
+
+    if data['status'] == 'OK':
+        location = data['results'][0]['geometry']['location']
+        return location['lat'], location['lng']
     else:
-        raise ValueError(f"Não foi possível geocodificar o endereço: {endereco}")
+        raise ValueError(f"Erro ao geocodificar com Google: {data['status']}")
 
 
-def calcular_distancia_waze(origem, destino, region='EU'):
-    try:
-        lat1, lng1 = endereco_para_coordenadas(origem)
-        lat2, lng2 = endereco_para_coordenadas(destino)
+def calcular_distancia_google(origem, destino):
+    lat1, lng1 = endereco_para_coordenadas(origem)
+    lat2, lng2 = endereco_para_coordenadas(destino)
 
-        origem_coord = f"{lat1},{lng1}"
-        destino_coord = f"{lat2},{lng2}"
+    url = (
+        f"https://maps.googleapis.com/maps/api/distancematrix/json?"
+        f"origins={lat1},{lng1}&destinations={lat2},{lng2}&key={GOOGLE_API_KEY}"
+    )
+    response = requests.get(url)
+    data = response.json()
 
-        rota = WazeRouteCalculator(origem_coord, destino_coord, region)
-        tempo_min, distancia_km = rota.calc_route_info(real_time=False)
-
-        return distancia_km, tempo_min
-    except WRCError as e:
-        raise ValueError(f"Erro ao calcular rota Waze: {e}")
+    if data['status'] == 'OK':
+        elemento = data['rows'][0]['elements'][0]
+        if elemento['status'] == 'OK':
+            distancia_km = elemento['distance']['value'] / 1000  # metros para km
+            tempo_min = elemento['duration']['value'] / 60  # segundos para minutos
+            return distancia_km, tempo_min
+        else:
+            raise ValueError(f"Erro na Distance Matrix: {elemento['status']}")
+    else:
+        raise ValueError(f"Erro na API Distance Matrix: {data['status']}")
 
 
 def gerar_features(end_origem, end_destino, horario=None):
     lat1, lng1 = endereco_para_coordenadas(end_origem)
     lat2, lng2 = endereco_para_coordenadas(end_destino)
-    distancia, tempo = calcular_distancia_waze(end_origem, end_destino)
+    distancia, tempo = calcular_distancia_google(end_origem, end_destino)
 
     now = horario or datetime.now()
     schedule_time = now.hour * 3600 + now.minute * 60 + now.second
