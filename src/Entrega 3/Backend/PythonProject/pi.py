@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
 
 # Configs globais
 SEED = 20
-GOOGLE_API_KEY = "AIzaSyDLZuBuKwtf5kIBRrC7e_Yf3Qaf8RuW"
+GOOGLE_API_KEY = "AIzaSyDLZuBuKwtf5kIBRrC7e_Yf3Qaf8RuWi10"
 
 
 def load_data():
