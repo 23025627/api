@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="11b035be-41d4-4757-a675-102d3102b6ff" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject/api.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject/base_corridas" afterDir="false" />
@@ -15,6 +16,9 @@
       <change beforePath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/pages/Home.js" afterDir="false" />
     </list>
+=======
+    <list default="true" id="11b035be-41d4-4757-a675-102d3102b6ff" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,8 +84,12 @@
       <workItem from="1746494076182" duration="142000" />
       <workItem from="1746589891007" duration="917000" />
       <workItem from="1746631760195" duration="7147000" />
+<<<<<<< Updated upstream
       <workItem from="1746758419265" duration="8743000" />
       <workItem from="1746817473679" duration="8463000" />
+=======
+      <workItem from="1746805104556" duration="792000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -89,6 +97,10 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+<<<<<<< Updated upstream
     <SUITE FILE_PATH="coverage/Projeto2$pi.coverage" NAME="pi Coverage Results" MODIFIED="1746758507461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject" />
+=======
+    <SUITE FILE_PATH="coverage/Projeto2$pi.coverage" NAME="pi Coverage Results" MODIFIED="1746805239560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject" />
+>>>>>>> Stashed changes
   </component>
 </project>
