@@ -5,17 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11b035be-41d4-4757-a675-102d3102b6ff" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Projeto2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Projeto2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject/api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject/base_corridas" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject/pi.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject/pi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/components/Maps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/components/Maps.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entrega 3/Frontend/pick-your-driver/src/pages/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject/api.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -64,6 +80,8 @@
       <workItem from="1746494076182" duration="142000" />
       <workItem from="1746589891007" duration="917000" />
       <workItem from="1746631760195" duration="7147000" />
+      <workItem from="1746758419265" duration="8743000" />
+      <workItem from="1746817473679" duration="8463000" />
     </task>
     <servers />
   </component>
@@ -71,6 +89,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Projeto2$pi.coverage" NAME="pi Coverage Results" MODIFIED="1746650807529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject" />
+    <SUITE FILE_PATH="coverage/Projeto2$pi.coverage" NAME="pi Coverage Results" MODIFIED="1746758507461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Entrega 3/Backend/PythonProject" />
   </component>
 </project>

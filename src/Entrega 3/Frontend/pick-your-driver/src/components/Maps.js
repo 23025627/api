@@ -9,19 +9,16 @@ import {
 const containerStyle = {
   width: '100%',
   height: '400px',
-  borderRadius: '10px',
+  borderRadius: '20px',
+  boxShadow: '20px',
   overflow: 'hidden',     
   boxShadow: '0 2px 2px rgba(0,0,0,0.3)'
 };
 
 const center = { lat: -23.5505, lng: -46.6333 }; // São Paulo
 
-function MapWithRoute() {
+function MapWithRoute({ origin, destination }) {
   const [response, setResponse] = useState(null);
-
-  // Parâmetros de origem e destino
-  const origin = { lat: -23.47986978917453, lng: -46.60072607175314 };
-  const destination = { lat: -23.5675, lng: -46.6480 };
 
   // Callback invocado quando o DirectionsService retorna resultados
   const directionsCallback = useCallback((res) => {
@@ -32,7 +29,7 @@ function MapWithRoute() {
 
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyDLZuBuKwtf5kIBRrC7e_Yf3Qaf8RuWi10"
+      googleMapsApiKey="AIzaSyDLZuBuKwtf5kIBRrC7e_Yf3Qaf8RuWi10" // Substitua pela sua chave da API do Google Maps
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -42,9 +39,9 @@ function MapWithRoute() {
         {/* Solicita a rota */}
         <DirectionsService
           options={{
-            origin,
-            destination,
-            travelMode: 'DRIVING' // WALKING, BICYCLING, TRANSIT…
+            origin: { lat: parseFloat(origin.split(',')[0]), lng: parseFloat(origin.split(',')[1]) },  // Converte origem para lat/lng
+            destination: { lat: parseFloat(destination.split(',')[0]), lng: parseFloat(destination.split(',')[1]) }, // Converte destino para lat/lng
+            travelMode: 'DRIVING' // Defina o modo de transporte, por exemplo, 'DRIVING', 'WALKING', 'BICYCLING'
           }}
           callback={directionsCallback}
         />

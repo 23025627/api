@@ -6,6 +6,8 @@ import 'aos/dist/aos.css';
 import Home from './pages/Home';
 import SobreNos from './pages/SobreNos';
 import SobreProjeto from './pages/SobreProjeto';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
     // 1) Hook de inicialização do AOS
