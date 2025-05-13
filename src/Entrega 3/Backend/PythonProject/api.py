@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.ensemble import RandomForestRegressor
 from pi import load_data, preprocess, treinar_modelo, prever_preco  # importa suas funções
 import warnings
 
@@ -14,7 +14,7 @@ CORS(app)
 print("Treinando modelo...")
 df = load_data()
 treino_x, teste_x, treino_y, teste_y = preprocess(df)
-modelo = treinar_modelo(treino_x, treino_y, GradientBoostingRegressor(random_state=20))
+modelo = treinar_modelo(treino_x, treino_y, RandomForestRegressor(random_state=20))
 
 @app.route("/api/prever", methods=["POST"])
 def api_prever():
