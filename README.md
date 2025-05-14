@@ -10,7 +10,7 @@
 
 ## Integrantes: <a href="https://www.linkedin.com/in/daniel-acioli-b72818322/">Daniel Baptista</a>, <a href="https://www.linkedin.com/in/fabiospindola/">Fábio Spindola</a>, <a href="https://br.linkedin.com/in/fabriciocnascimento">Fabrício Nascimento</a>, <a href="https://www.linkedin.com/in/leonardo-de-souza-mouzinho-5581bb2a8/">Leonardo de Souza</a>
 
-## Professores Orientadores: <a href="https://www.linkedin.com/in/aimarlopes/">Aimar Martins Lopes</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Bruno Alexander Rosetti de Quiroz</a>
+## Professores Orientadores: <a href="https://www.linkedin.com/in/aimarlopes/">Aimar Martins Lopes</a>, <a href="https://br.linkedin.com/in/edsonbarbero">Edson Ricardo Barbero</a>, <a href="https://br.linkedin.com/in/eduardo-savino-gomes-77833a10">Eduardo Savino Gomes</a>, <a href="https://br.linkedin.com/in/ronaldo-araujo-pinto-3542811a">Ronaldo Araujo Pinto</a>, <a href="https://br.linkedin.com/in/lucymari">Lucy Mari Tabuti</a>
 ## Descrição
 
 <p align="center">
