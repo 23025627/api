@@ -17,13 +17,13 @@ treino_x, teste_x, treino_y, teste_y = preprocess(df)
 modelo = treinar_modelo(treino_x, treino_y, RandomForestRegressor(random_state=20))
 
 
-def salvar_previsao_mysql(origem, destino, lat1, lng1, lat2, lng2, distancia, tempo, preco):
+def salvar_previsao_mysql(nome, email, origem, destino, lat1, lng1, lat2, lng2, distancia, tempo, preco):
     try:
         conn = mysql.connector.connect(
             host="doamaisbd.mysql.database.azure.com",
             user="doamaisadmin",
-            password="ChargeBack2nads",
-            database="doamais",
+            password="ChargeBack2nads",  # ⚠️ Altere para usar uma variável de ambiente segura!
+            database="db_pick_your_driver",
             ssl_disabled=False
         )
         cursor = conn.cursor()

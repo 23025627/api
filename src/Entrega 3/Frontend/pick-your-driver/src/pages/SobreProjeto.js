@@ -13,7 +13,6 @@ const SobreProjetoContainer = styled.div`
 function SobreProjeto(){
     return(
         <SobreProjetoContainer>
-            <NavBar />
 
             <div className="container my-5">
                 <div className="row gy-4">
@@ -110,7 +109,7 @@ function SobreProjeto(){
                                 <p style={{ textAlign: "left" }}>
                                     <span style={{ color: "rgb(32, 18, 77)" }}>
                                     Diante da grande variedade de opções e das constantes variações de preço, surge uma nova solução que permite comparar os valores das corridas em tempo real, a Pick Your Driver, ajudando os passageiros a economizar dinheiro e a escolher a melhor opção de acordo com suas necessidades e preferências.
-                                    <p>A Pick Your Driver é um comparador de preços que reúne os principais serviços de transporte disponíveis no Brasil, incluindo tanto aplicativos de corrida quanto táxis tradicionais. Dessa forma, fica muito mais fácil e rápido escolher a opção que oferece o melhor custo-benefício para suas viagens.</p>
+                                    <span>A Pick Your Driver é um comparador de preços que reúne os principais serviços de transporte disponíveis no Brasil, incluindo tanto aplicativos de corrida quanto táxis tradicionais. Dessa forma, fica muito mais fácil e rápido escolher a opção que oferece o melhor custo-benefício para suas viagens.</span>
                                     </span>
                                     <br />
                                     <br />

@@ -1,41 +1,82 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import Logo from '../assets/logo_fundo_transparente.png';
 
-const NavBarContainer = styled.div`
+const NavBarContainer = styled.div``;
 
-`
-const StyledLink = styled(Link)`
-    text-decoration: none;
-`
+function NavBar() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-function NavBar(){
-    return(
-        <NavBarContainer>
-            <nav class="navbar navbar-expand-lg bg-body-secondary">
-                <div class="container-fluid">
-                    <a class="navbar-brand"><StyledLink to="/"><img src={Logo} alt="Logo" width="75" height="60"/></StyledLink></a><a class="navbar-brand fw-bold ">Pick Your Driver</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                        <StyledLink to="/"><a class="nav-link active" aria-current="page">Início</a></StyledLink>
-                        </li>
-                        <li class="nav-item">
-                        <StyledLink to="/sobreprojeto"><a class="nav-link active">Sobre o Projeto</a></StyledLink>
-                        </li>
-                        <li class="nav-item">
-                        <StyledLink to="/sobrenos"><a class="nav-link active">Sobre Nós</a></StyledLink>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
-            </nav>
-        </NavBarContainer>
-    );
+  // Alterna o menu
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  // Fecha menu ao clicar num link
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  return (
+    <NavBarContainer>
+      <nav className="navbar navbar-expand-lg bg-body-secondary">
+        <div className="container-fluid">
+          {/* Logo e título */}
+          <NavLink to="/" className="navbar-brand" end onClick={closeMenu}>
+            <img src={Logo} alt="Logo" width="75" height="60" />
+          </NavLink>
+          <span className="navbar-brand fw-bold">Pick Your Driver</span>
+
+          {/* Botão toggle do menu */}
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={toggleMenu}
+            aria-controls="navbarNav"
+            aria-expanded={menuOpen ? "true" : "false"}
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          {/* Menu colapsável */}
+          <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <NavLink
+                  to="/"
+                  end
+                  className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}
+                  onClick={closeMenu}
+                >
+                  Início
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/sobreprojeto"
+                  className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}
+                  onClick={closeMenu}
+                >
+                  Sobre o Projeto
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/sobrenos"
+                  className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}
+                  onClick={closeMenu}
+                >
+                  Sobre Nós
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </NavBarContainer>
+  );
 }
 
 export default NavBar;

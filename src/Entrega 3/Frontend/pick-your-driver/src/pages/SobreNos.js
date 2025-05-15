@@ -14,7 +14,6 @@ const SobreNosContainer = styled.div`
 function SobreNos(){
     return(
         <SobreNosContainer>
-            <NavBar />
 
             <div class="container py-4 py-xl-5">
                 <div class="row mb-5">
