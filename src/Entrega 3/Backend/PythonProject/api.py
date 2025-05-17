@@ -7,6 +7,11 @@ from datetime import datetime
 import unicodedata
 import mysql.connector
 
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives import serialization
+import base64
+
 # Inicialização do app Flask
 app = Flask(__name__)
 CORS(app)
@@ -25,6 +30,22 @@ DB_CONFIG = {
     "database": "db_pick_your_driver",
     "ssl_disabled": False
 }
+
+# --- CARREGA CHAVE PÚBLICA PARA RSA ---
+with open("public_key.pem", "rb") as f:
+    public_key = serialization.load_pem_public_key(f.read())
+
+def criptografar_rsa(mensagem):
+    """Criptografa uma string usando a chave pública RSA e retorna base64."""
+    criptografado = public_key.encrypt(
+        mensagem.encode("utf-8"),
+        padding.OAEP(
+            mgf=padding.MGF1(algorithm=hashes.SHA256()),
+            algorithm=hashes.SHA256(),
+            label=None
+        )
+    )
+    return base64.b64encode(criptografado).decode("utf-8")
 
 # Utilitários
 def limpar_endereco(endereco):
@@ -122,8 +143,9 @@ def prever_preco():
         origem = dados.get("endereco_partida", "Avenida Paulista, São Paulo, SP")
         destino = dados.get("endereco_destino", "Praça da Sé, São Paulo, SP")
 
-        if not nome or not email or not origem or not destino:
-            return jsonify({"erro": "Campos obrigatórios: nome, email, endereco_partida, endereco_destino"}), 400
+        # Criptografa nome e email usando RSA
+        nome = criptografar_rsa(nome)
+        email = criptografar_rsa(email)
 
         features, distancia, tempo, lat1, lng1, lat2, lng2 = gerar_features(origem, destino)
         preco = modelo.predict(features)[0]
