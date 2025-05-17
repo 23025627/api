@@ -2,20 +2,25 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function PrevisaoCorrida() {
-  const [origem, setOrigem] = useState('');
-  const [destino, setDestino] = useState('');
-  const [preco, setPreco] = useState(null);
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [enderecoPartida, setEnderecoPartida] = useState('');
+  const [enderecoDestino, setEnderecoDestino] = useState('');
+  const [resposta, setResposta] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resposta = await axios.post('http://localhost:5000/api/prever', {
-        origem,
-        destino,
-      });
-      setPreco(resposta.data.preco);
+      const resp = await axios.post('http://localhost:5000/api/prever', {
+  nome,
+  email,
+  endereco_partida: enderecoPartida,
+  endereco_destino: enderecoDestino,
+  });
+
+      setResposta(resp.data);
     } catch (err) {
-      console.error('Erro ao obter previsão:', err);
+      console.error('Erro ao obter previsão:', err.response?.data || err.message);
     }
   };
 
@@ -25,19 +30,40 @@ function PrevisaoCorrida() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Origem"
-          value={origem}
-          onChange={(e) => setOrigem(e.target.value)}
+          placeholder="Nome"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Destino"
-          value={destino}
-          onChange={(e) => setDestino(e.target.value)}
+          placeholder="Endereço de partida"
+          value={enderecoPartida}
+          onChange={(e) => setEnderecoPartida(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Endereço de destino"
+          value={enderecoDestino}
+          onChange={(e) => setEnderecoDestino(e.target.value)}
         />
         <button type="submit">Prever</button>
       </form>
-      {preco !== null && <p>Preço estimado: R$ {preco.toFixed(2)}</p>}
+
+      {resposta && (
+        <div>
+          <p>Preço Ubex: R$ {resposta.preco_ubex}</p>
+          <p>Preço Confort: R$ {resposta.preco_confort}</p>
+          <p>Preço Black: R$ {resposta.preco_black}</p>
+          <p>Distância: {resposta.distancia_km} km</p>
+          <p>Tempo estimado: {resposta.tempo_estimado_min} min</p>
+        </div>
+      )}
     </div>
   );
 }

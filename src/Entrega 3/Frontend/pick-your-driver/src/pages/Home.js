@@ -11,6 +11,8 @@ const HomeContainer = styled.div``;
 
 function Home() {
   console.log("Home renderizou");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [directions, setDirections] = useState(null);
@@ -103,10 +105,22 @@ function Home() {
             </h1>
             <div className="col-md-6">
               <h1 className="fs-5" style={{ marginTop: "10px" }}>Nome</h1>
-              <input type="text" style={{ width: "300px" }} />
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder=""
+                style={{ width: "300px" }}
+              />
 
               <h1 className="fs-5" style={{ marginTop: "10px" }}>E-mail</h1>
-              <input type="email" style={{ width: "300px" }} />
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder=""
+                style={{ width: "300px" }}
+              />
 
               <h1 className="fs-5" style={{ marginTop: "10px" }}>Saindo de</h1>
               <input

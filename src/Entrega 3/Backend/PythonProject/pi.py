@@ -7,6 +7,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from datetime import datetime
 import unicodedata
 import warnings
+from joblib import dump
 
 warnings.filterwarnings("ignore")
 
@@ -28,7 +29,6 @@ def strtotime(time_str):
 
 
 def preprocess(df):
-    # Reduz 50% da base
     df = df.sample(frac=0.5, random_state=SEED).reset_index(drop=True)
 
     X = df[["OrigDest_x", "Lat1", "Lng1", "OrigDest_y", "Lat2", "Lng2", "Distancia", "Dia", "schedule_time"]]
@@ -100,8 +100,8 @@ def calcular_distancia_google(origem, destino):
     if data['status'] == 'OK':
         elemento = data['rows'][0]['elements'][0]
         if elemento['status'] == 'OK':
-            distancia_km = elemento['distance']['value'] / 1000  # metros para km
-            tempo_min = elemento['duration']['value'] / 60  # segundos para minutos
+            distancia_km = elemento['distance']['value'] / 1000
+            tempo_min = elemento['duration']['value'] / 60
             return distancia_km, tempo_min
         else:
             raise ValueError(f"Erro na Distance Matrix: {elemento['status']}")
@@ -160,6 +160,10 @@ if __name__ == "__main__":
     gb_model = treinar_modelo(treino_x, treino_y, GradientBoostingRegressor(random_state=SEED))
     avaliar_modelo(gb_model, teste_x, teste_y)
 
+    # Salvar o modelo GradientBoosting como .pkl
+    dump(gb_model, "modelo_preco.pkl")
+    print("\n✅ Modelo salvo como modelo_preco.pkl com sucesso!")
+
     print("\n=== Previsão de Preço Uber ===")
     origem = input("Digite o endereço de ORIGEM: ").strip()
     destino = input("Digite o endereço de DESTINO: ").strip()
@@ -174,9 +178,9 @@ if __name__ == "__main__":
         preco_black = preco_confort * 1.24
 
         print(f"\n🚗 Preço estimado da corrida (Ubex): R$ {preco:.2f}")
-        print(f"\n🚗 Preço estimado (Uber Confort): R$ {preco_confort:.2f}")
-        print(f"\n🚘 Preço estimado (Uber Black): R$ {preco_black:.2f}")
-        print(f"\n📍 Distância estimada: {distancia:.2f} km")
+        print(f"🚗 Preço estimado (Uber Confort): R$ {preco_confort:.2f}")
+        print(f"🚘 Preço estimado (Uber Black): R$ {preco_black:.2f}")
+        print(f"📍 Distância estimada: {distancia:.2f} km")
         print(f"⏱️ Tempo estimado: {tempo:.0f} minutos")
 
     except Exception as e:

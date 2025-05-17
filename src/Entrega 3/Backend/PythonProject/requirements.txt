@@ -1,6 +1,8 @@
- WazeRouteCalculator
- pandas
- geopy
- scikit-learn
+WazeRouteCalculator
+pandas
+geopy
+scikit-learn
 flask
 flask-cors
+requests
+joblib

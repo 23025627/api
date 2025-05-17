@@ -1,36 +1,98 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from sklearn.ensemble import RandomForestRegressor
-from pi import load_data, preprocess, treinar_modelo, prever_preco
+import joblib
+import pandas as pd
+import requests
+from datetime import datetime
+import unicodedata
 import mysql.connector
-import warnings
 
-warnings.filterwarnings("ignore")
-
+# Inicialização do app Flask
 app = Flask(__name__)
 CORS(app)
 
-# Treina o modelo uma vez ao iniciar a API
-print("Treinando modelo...")
-df = load_data()
-treino_x, teste_x, treino_y, teste_y = preprocess(df)
-modelo = treinar_modelo(treino_x, treino_y, RandomForestRegressor(random_state=20))
+# Carrega o modelo
+modelo = joblib.load("modelo_preco.pkl")
 
+# Chave da API Google (ATENÇÃO: mantenha segura em produção!)
+GOOGLE_API_KEY = "AIzaSyDLZuBuKwtf5kIBRrC7e_Yf3Qaf8RuWi10"
 
-def salvar_previsao_mysql(nome, email, origem, destino, lat1, lng1, lat2, lng2, distancia, tempo, preco):
+# Configurações do banco de dados
+DB_CONFIG = {
+    "host": "doamaisbd.mysql.database.azure.com",
+    "user": "doamaisadmin",
+    "password": "ChargeBack2nads",
+    "database": "db_pick_your_driver",
+    "ssl_disabled": False
+}
+
+# Utilitários
+def limpar_endereco(endereco):
+    nfkd = unicodedata.normalize('NFKD', endereco)
+    return u"".join([c for c in nfkd if not unicodedata.combining(c)])
+
+def endereco_para_coordenadas(endereco):
+    endereco_limpo = limpar_endereco(endereco)
+    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={endereco_limpo}&key={GOOGLE_API_KEY}"
+    response = requests.get(url)
+    data = response.json()
+
+    if data['status'] == 'OK':
+        location = data['results'][0]['geometry']['location']
+        return location['lat'], location['lng']
+    else:
+        raise ValueError(f"Erro ao geocodificar com Google: {data['status']}")
+
+def calcular_distancia_google(origem, destino):
+    lat1, lng1 = endereco_para_coordenadas(origem)
+    lat2, lng2 = endereco_para_coordenadas(destino)
+
+    url = (
+        f"https://maps.googleapis.com/maps/api/distancematrix/json?"
+        f"origins={lat1},{lng1}&destinations={lat2},{lng2}&key={GOOGLE_API_KEY}"
+    )
+    response = requests.get(url)
+    data = response.json()
+
+    if data['status'] == 'OK':
+        elemento = data['rows'][0]['elements'][0]
+        if elemento['status'] == 'OK':
+            distancia_km = elemento['distance']['value'] / 1000
+            tempo_min = elemento['duration']['value'] / 60
+            return lat1, lng1, lat2, lng2, distancia_km, tempo_min
+        else:
+            raise ValueError(f"Erro na Distance Matrix: {elemento['status']}")
+    else:
+        raise ValueError(f"Erro na API Distance Matrix: {data['status']}")
+
+def gerar_features(end_origem, end_destino):
+    lat1, lng1, lat2, lng2, distancia, tempo = calcular_distancia_google(end_origem, end_destino)
+
+    now = datetime.now()
+    schedule_time = now.hour * 3600 + now.minute * 60 + now.second
+    dia = now.weekday()
+
+    orig_dest_x = abs(hash(end_origem)) % (10 ** 8)
+    orig_dest_y = abs(hash(end_destino)) % (10 ** 8)
+
+    df = pd.DataFrame([{
+        "OrigDest_x": orig_dest_x,
+        "Lat1": lat1,
+        "Lng1": lng1,
+        "OrigDest_y": orig_dest_y,
+        "Lat2": lat2,
+        "Lng2": lng2,
+        "Distancia": distancia,
+        "Dia": dia,
+        "schedule_time": schedule_time
+    }])
+
+    return df, distancia, tempo, lat1, lng1, lat2, lng2
+
+def salvar_viagem_banco(nome, email, origem, destino, lat1, lng1, lat2, lng2, distancia, tempo, preco):
     try:
-        conn = mysql.connector.connect(
-            host="doamaisbd.mysql.database.azure.com",
-            user="doamaisadmin",
-            password="ChargeBack2nads",  # ⚠️ Altere para usar uma variável de ambiente segura!
-            database="db_pick_your_driver",
-            ssl_disabled=False
-        )
-        cursor = conn.cursor()
-
-        nome = "Usuário API"
-        email = "api@exemplo.com"
-
+        conexao = mysql.connector.connect(**DB_CONFIG)
+        cursor = conexao.cursor()
         query = """
             INSERT INTO viagens (
                 nome, email, endereco_partida, endereco_destino,
@@ -40,51 +102,44 @@ def salvar_previsao_mysql(nome, email, origem, destino, lat1, lng1, lat2, lng2, 
             ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
         valores = (
-            nome, email, origem, destino, lat1, lng1, lat2, lng2,
-            distancia, f"{int(tempo)} minutos", preco
+            nome, email, origem, destino,
+            lat1, lng1, lat2, lng2,
+            round(distancia, 2), f"{round(tempo, 1)} min", round(preco, 2)
         )
-
         cursor.execute(query, valores)
-        conn.commit()
+        conexao.commit()
         cursor.close()
-        conn.close()
-
-    except mysql.connector.Error as err:
-        print(f"Erro ao salvar no banco: {err}")
-
+        conexao.close()
+    except Exception as e:
+        print(f"Erro ao salvar no banco: {e}")
 
 @app.route("/api/prever", methods=["POST"])
-def api_prever():
-    dados = request.get_json()
-    origem = dados.get("origem")
-    destino = dados.get("destino")
-
-    if not origem or not destino:
-        return jsonify({"erro": "Origem e destino são obrigatórios"}), 400
-
+def prever_preco():
     try:
-        resultado = prever_preco(modelo, origem, destino)
-        preco = resultado["Preco_Previsto"].values[0]
-        distancia = resultado["Distancia"].values[0]
-        tempo = resultado["Tempo"].values[0]
-        lat1 = resultado["Lat1"].values[0]
-        lng1 = resultado["Lng1"].values[0]
-        lat2 = resultado["Lat2"].values[0]
-        lng2 = resultado["Lng2"].values[0]
+        dados = request.get_json()
+        nome = dados.get("nome", "Cliente Anônimo")
+        email = dados.get("email", "sem_email@exemplo.com")
+        origem = dados.get("endereco_partida", "Avenida Paulista, São Paulo, SP")
+        destino = dados.get("endereco_destino", "Praça da Sé, São Paulo, SP")
 
-        salvar_previsao_mysql(origem, destino, lat1, lng1, lat2, lng2, distancia, tempo, preco)
+        if not nome or not email or not origem or not destino:
+            return jsonify({"erro": "Campos obrigatórios: nome, email, endereco_partida, endereco_destino"}), 400
+
+        features, distancia, tempo, lat1, lng1, lat2, lng2 = gerar_features(origem, destino)
+        preco = modelo.predict(features)[0]
+
+        salvar_viagem_banco(nome, email, origem, destino, lat1, lng1, lat2, lng2, distancia, tempo, preco)
 
         return jsonify({
             "preco_ubex": round(preco, 2),
             "preco_confort": round(preco * 1.25, 2),
             "preco_black": round(preco * 1.25 * 1.24, 2),
             "distancia_km": round(distancia, 2),
-            "tempo_min": round(tempo, 0)
+            "tempo_estimado_min": round(tempo, 1)
         })
 
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
 
-
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
