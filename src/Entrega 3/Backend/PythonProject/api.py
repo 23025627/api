@@ -166,9 +166,7 @@ def prever_preco():
         if not origem or not destino:
             return jsonify({"erro": "Endereço de origem e destino são obrigatórios"}), 400
 
-        # resto do código ...
 
-        # ... resto do código
 
         # Criptografa nome e email usando RSA
         nome = criptografar_rsa(nome)
@@ -186,6 +184,7 @@ def prever_preco():
             "distancia_km": round(distancia, 2),
             "tempo_estimado_min": round(tempo, 1)
         })
+
 
     except Exception as e:
         return jsonify({"erro": str(e)}), 500

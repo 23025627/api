@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 import requests
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from datetime import datetime
 import unicodedata
@@ -156,12 +156,8 @@ if __name__ == "__main__":
     rf_model = treinar_modelo(treino_x, treino_y, RandomForestRegressor(n_estimators=100, random_state=SEED))
     avaliar_modelo(rf_model, teste_x, teste_y)
 
-    print("\nTreinando modelo GradientBoosting...")
-    gb_model = treinar_modelo(treino_x, treino_y, GradientBoostingRegressor(random_state=SEED))
-    avaliar_modelo(gb_model, teste_x, teste_y)
-
-    # Salvar o modelo GradientBoosting como .pkl
-    dump(gb_model, "modelo_preco.pkl")
+    # Salvar o modelo RandomForest como .pkl
+    dump(rf_model, "modelo_preco.pkl")
     print("\n✅ Modelo salvo como modelo_preco.pkl com sucesso!")
 
     print("\n=== Previsão de Preço Uber ===")
@@ -169,7 +165,7 @@ if __name__ == "__main__":
     destino = input("Digite o endereço de DESTINO: ").strip()
 
     try:
-        resultado = prever_preco(gb_model, origem, destino)
+        resultado = prever_preco(rf_model, origem, destino)
         preco = resultado["Preco_Previsto"].values[0]
         distancia = resultado["Distancia"].values[0]
         tempo = resultado["Tempo"].values[0]
