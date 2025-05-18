@@ -6,6 +6,13 @@ import requests
 from datetime import datetime
 import unicodedata
 import mysql.connector
+import numpy
+import sklearn
+import urllib.parse
+print("NumPy:", numpy.__version__)
+print("scikit-learn:", sklearn.__version__)
+
+
 
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives import hashes
@@ -52,9 +59,14 @@ def limpar_endereco(endereco):
     nfkd = unicodedata.normalize('NFKD', endereco)
     return u"".join([c for c in nfkd if not unicodedata.combining(c)])
 
+
 def endereco_para_coordenadas(endereco):
     endereco_limpo = limpar_endereco(endereco)
-    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={endereco_limpo}&key={GOOGLE_API_KEY}"
+    endereco_codificado = urllib.parse.quote(endereco_limpo)
+    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={endereco_codificado}&key={GOOGLE_API_KEY}"
+
+    print("URL da requisição geocodificada:", url)  # útil para debug
+
     response = requests.get(url)
     data = response.json()
 
@@ -62,7 +74,7 @@ def endereco_para_coordenadas(endereco):
         location = data['results'][0]['geometry']['location']
         return location['lat'], location['lng']
     else:
-        raise ValueError(f"Erro ao geocodificar com Google: {data['status']}")
+        raise ValueError(f"Erro ao geocodificar com Google: {data['status']} - Endereço: {endereco}")
 
 def calcular_distancia_google(origem, destino):
     lat1, lng1 = endereco_para_coordenadas(origem)
@@ -137,11 +149,26 @@ def salvar_viagem_banco(nome, email, origem, destino, lat1, lng1, lat2, lng2, di
 @app.route("/api/prever", methods=["POST"])
 def prever_preco():
     try:
-        dados = request.get_json()
-        nome = dados.get("nome", "Cliente Anônimo")
-        email = dados.get("email", "sem_email@exemplo.com")
-        origem = dados.get("endereco_partida", "Avenida Paulista, São Paulo, SP")
-        destino = dados.get("endereco_destino", "Praça da Sé, São Paulo, SP")
+        dados = request.get_json(force=True)
+        print("JSON recebido:", dados)
+
+        if not dados:
+            return jsonify({"erro": "JSON não recebido"}), 400
+
+        nome = dados.get("nome", "")
+        email = dados.get("email", "")
+        origem = dados.get("origem", "")
+        destino = dados.get("destino", "")
+
+        print(f"Origem: '{origem}'")
+        print(f"Destino: '{destino}'")
+
+        if not origem or not destino:
+            return jsonify({"erro": "Endereço de origem e destino são obrigatórios"}), 400
+
+        # resto do código ...
+
+        # ... resto do código
 
         # Criptografa nome e email usando RSA
         nome = criptografar_rsa(nome)
@@ -164,4 +191,4 @@ def prever_preco():
         return jsonify({"erro": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
