@@ -23,6 +23,11 @@ import base64
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/", methods=["GET"])
+def home():
+    return "API está rodando!"
+
+
 # Carrega o modelo
 modelo = joblib.load("modelo_preco.pkl")
 
@@ -188,6 +193,8 @@ def prever_preco():
 
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
