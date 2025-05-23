@@ -140,10 +140,10 @@ function Home() {
                 style={{ width: "300px" }}
               />
 
-              <button
+              <button 
                 type="button"
-                className="btn btn-dark"
-                style={{ fontWeight: "bold", marginTop: "20px", display: "flex" }}
+                className="btn btn-dark mt-3 d-block"
+                style={{ fontWeight: "bold", marginTop: "20px", }}
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
                 onClick={handleGetRoute}
@@ -153,8 +153,9 @@ function Home() {
               </button>
             </div>
 
-            <div className="col-md-6">
-            <GoogleMap
+            <div className="col-md-6 mt-4 mt-md-0" style={{ marginTop: '5px' }}>
+              
+            <GoogleMap 
             mapContainerStyle={{ width: "100%", height: "400px", boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.05)', borderRadius: '20px' }}
             center={{ lat: -23.55052, lng: -46.63331 }}zoom={14}>
               {directions && <DirectionsRenderer directions={directions} />}
